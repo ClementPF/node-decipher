@@ -28,11 +28,11 @@ const findByNextClosest = (cypher) => {
 
   var wordArray = cleanCypher.split(" ");
 
-  let next = findBestNextWord(wordArray, maps[0]);
-  while (wordArray.length > 1 && maps.length > 0 && next) {
+  while (wordArray.length > 1 && maps.length > 0) {
+    next = findBestNextWord(wordArray, maps[0]);
+    if (!next) break;
     maps = enrich(maps, next, cypher);
     wordArray = wordArray.filter((w) => w !== next);
-    next = findBestNextWord(wordArray, maps[0]);
   }
 
   return maps.map((m) => decypher(cypher, m));

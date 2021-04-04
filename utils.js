@@ -113,6 +113,8 @@ const findBestNextWord = (words, map) => {
 
   const wordsLeft = words.map(countUnkownChars).filter(removeKownWords);
 
+  console.log(wordsLeft);
+
   const oneLetterWords = wordsLeft.find((w) => getWord(w).length === 1);
   if (oneLetterWords) return getWord(oneLetterWords);
 
@@ -126,7 +128,8 @@ const cleanUpSentence = (word) =>
     .toLowerCase()
     .replace(/'/gi, "")
     .replace(/[^0-9a-z]/gi, " ")
-    .replace(/\s\s+/g, " ");
+    .replace(/\s\s+/g, " ")
+    .trim();
 
 module.exports = {
   decodeWith,
